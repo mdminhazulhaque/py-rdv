@@ -5,7 +5,7 @@
     Date: 2016-02-05 10:06:59 PM
 '''
 
-import pyscreenshot as ps
+from PIL import ImageGrab
 import socket
 import StringIO
 
@@ -50,7 +50,7 @@ while True:
         # string buffer to save image
         imbuffer = StringIO.StringIO()
         # get desktop screenshot
-        imdesktop = ps.grab() #bbox=(0,0,100,100))
+        imdesktop = ImageGrab.grab()
         # save image to string buffer
         imdesktop.save(imbuffer, 'png')
         # get image data into variables
@@ -58,6 +58,7 @@ while True:
         imbuffer.close()
         # write response
         csock.sendall(image_reply + imcontents)
+
     elif 'GET / HTTP/1.1' in req:
         # send HTML reply
         csock.sendall(html_reply)
