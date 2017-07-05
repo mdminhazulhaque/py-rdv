@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
 '''
-    Author: Md. Minhazul Haque
-    Date: 2016-02-05 10:06:59 PM
+Author: Md. Minhazul Haque
+Date: 2016-02-05 10:06:59 PM
 '''
 
-from PIL import ImageGrab
+try:
+    from PIL import ImageGrab
+except:
+    import pyscreenshot as ImageGrab
+    
 import socket
 import StringIO
 
